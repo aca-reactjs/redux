@@ -1,5 +1,10 @@
-import { List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+
 import store from "../store";
 import { getTodoItems } from "../store/features/todo/todo";
 
@@ -21,15 +26,20 @@ export default function TodoList() {
       <Typography variant="h5" component="h3">
         To Do List
       </Typography>
-      <List>
-        {todoList.map((item, idx) => {
-          return (
-            <ListItem key={idx}>
-              <ListItemText primary={item.text} />
-            </ListItem>
-          );
-        })}
-      </List>
+
+      {todoList?.length ? (
+        <Paper>
+          <List>
+            {todoList.map((item, idx) => {
+              return (
+                <ListItem key={idx}>
+                  <ListItemText primary={item.text} />
+                </ListItem>
+              );
+            })}
+          </List>
+        </Paper>
+      ) : null}
     </Paper>
   );
 }

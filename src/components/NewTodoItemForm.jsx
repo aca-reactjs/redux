@@ -16,7 +16,9 @@ export default function NewTodoItemForm() {
     setInputValue(e.target.value);
   };
 
-  const handleAddTodoItem = () => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
     dispatch(addTodoItem({ text: inputValue }));
 
     setInputValue("");
@@ -26,27 +28,25 @@ export default function NewTodoItemForm() {
     <Paper
       sx={{
         padding: "1rem",
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
         width: 400,
         margin: "1rem",
       }}
       elevation={24}
     >
-      <TextField
-        label="Standard"
-        variant="outlined"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-      <Button
-        onClick={handleAddTodoItem}
-        sx={{ height: 56 }}
-        variant="outlined"
+      <form
+        onSubmit={handleFormSubmit}
+        style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
       >
-        Click
-      </Button>
+        <TextField
+          label="Standard"
+          variant="outlined"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <Button sx={{ height: 56 }} variant="outlined">
+          Click
+        </Button>
+      </form>
     </Paper>
   );
 }

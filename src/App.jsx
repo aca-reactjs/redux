@@ -1,19 +1,23 @@
-import { useState } from "react";
-
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
-import { useDispatch } from "react-redux";
-import { addTodoItem } from "./store/features/todo/todo";
+
 import NewTodoItemForm from "./components/NewTodoItemForm";
 import TodoList from "./components/TodoList";
 
 function App() {
   return (
-    <div>
+    <Paper
+      sx={{
+        display: "flex",
+        border: "none",
+        boxShadow: "none",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        width: "100%",
+      }}
+    >
       <NewTodoItemForm />
       <TodoList />
-    </div>
+    </Paper>
   );
 }
 
