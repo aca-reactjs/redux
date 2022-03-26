@@ -16,11 +16,17 @@ const { actions, reducer } = createSlice({
 
       state.items.push(newItem);
     },
+
+    deleteTodoItem: (state, { payload }) => {
+      const newItems = state.items.filter((item) => item.id !== payload.id);
+
+      state.items = newItems;
+    },
   },
 });
 
 export default reducer;
 
-export const { addTodoItem } = actions;
+export const { addTodoItem, deleteTodoItem } = actions;
 
 export const getTodoItems = (state) => state.todo.items;
